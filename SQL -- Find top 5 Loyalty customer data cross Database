@@ -1,4 +1,9 @@
--- customer id = customer id เพื่อต่อ order_id   order id ต่อ order id เพื่อหา product id.  เอา product id ต่อ product id เพื่อหา name
+-- customer id = customer id  to get order_id   
+--  order id = order id  to get product id
+--  product id = product id to get  name // Cross Database
+-- Calculate total income 
+-- sort top 5 names of important customer ,customer id , firstname , lastname , birthdate , order id , product id , unit price , quantity , order name and total price  by total price
+
 SELECT 
     c.customer_id,
     c.first_name,
