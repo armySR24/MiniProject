@@ -1,0 +1,22 @@
+-- customer id = customer id เพื่อต่อ order_id   order id ต่อ order id เพื่อหา product id.  เอา product id ต่อ product id เพื่อหา name
+SELECT 
+    c.customer_id,
+    c.first_name,
+    c.last_name,
+    c.birth_date,
+    o.order_id,
+    oi.product_id,
+    oi.unit_price,
+    oi.quantity,
+    iv.name,
+    oi.quantity * oi.unit_price AS total
+    
+FROM
+    sql_store.customers AS c
+    JOIN sql_store.orders AS o ON c.customer_id = o.customer_id
+	JOIN sql_store.order_items AS oi ON o.order_id = oi.order_id
+    JOIN sql_inventory.products AS iv ON oi.product_id = iv.product_id
+
+WHERE c.birth_date > '1965-01-01'
+ORDER BY total DESC
+LIMIT 5
