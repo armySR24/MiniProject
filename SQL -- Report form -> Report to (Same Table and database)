@@ -1,0 +1,20 @@
+-- Want to know who are send report to secretary and them sender office and secretary office 
+
+-- Join some colum to other some colum at the same table Because want to link the diffrent colum at the same rows Ex: report_id_from   link with report_id_to
+
+SELECT 
+    e_id.employee_id,
+    e_id.job_title,
+    e_id.office_id,
+    
+    o.address,
+    
+    em_id_report_to.reports_to AS get_report_from,
+    em_id_report_to.job_title,
+    em_id_report_to.office_id,    -- Cross DataBase
+    o_r.address
+FROM
+    sql_hr.employees AS e_id
+        JOIN sql_hr.employees AS em_id_report_to ON e_id.employee_id = em_id_report_to.reports_to
+        JOIN sql_hr.offices AS o ON e_id.office_id = o.office_id            -- Cross DataBase
+        JOIN sql_hr.offices AS o_r ON em_id_report_to.office_id = o_r.office_id               -- Cross DataBase
